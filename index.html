@@ -531,15 +531,15 @@ html, body {
 /* Right-align everything (Arabic natural reading order) */
 .kk-welcome {
   padding: 130px 28px 40px;   /* top padding accounts for floating header */
-  justify-content: flex-start;
-  align-items: center;       /* container centered horizontally */
+  justify-content: center;
+  align-items: center;
 }
 .kk-welcome-header {
-  display: block;            /* simple block so text-align works */
-  margin-bottom: 32px;
-  max-width: 720px;
+  display: block;
+  margin-bottom: 28px;
+  max-width: 1200px;
   width: 100%;
-  text-align: right;         /* both greeting + name aligned right */
+  text-align: right;
 }
 .kk-welcome-greet,
 .kk-welcome-name {
@@ -547,14 +547,14 @@ html, body {
   text-align: right;
 }
 .kk-welcome-greet {
-  font-size: 17px;
+  font-size: 20px;
   color: var(--text-mute);
   font-weight: 500;
 }
 .kk-welcome-name {
   font-family: 'Tajawal', sans-serif;
   font-weight: 900;
-  font-size: 44px;
+  font-size: 52px;
   color: var(--text);
   letter-spacing: -1px;
   line-height: 1.1;
@@ -564,67 +564,67 @@ html, body {
 .kk-info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 1100px;
+  gap: 20px;
+  max-width: 1200px;
   width: 100%;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 .kk-info-card {
   background: #fff;
   border: 2px solid var(--border);
-  border-radius: 20px;
-  padding: 32px 24px 28px;
+  border-radius: 24px;
+  padding: 40px 28px 36px;
   transition: border-color .15s, box-shadow .15s;
   display: flex;
   flex-direction: column;
-  min-height: 160px;
+  min-height: 210px;
 }
 .kk-info-card:hover {
   border-color: var(--green);
-  box-shadow: 0 8px 24px -8px rgba(20,89,60,.15);
+  box-shadow: 0 10px 30px -8px rgba(20,89,60,.18);
 }
 .kk-info-card-head {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 .kk-info-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
   background: var(--green-light);
   display: grid;
   place-items: center;
   flex-shrink: 0;
 }
 .kk-info-icon svg {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   color: var(--green);
 }
 .kk-info-card-head .kk-info-label {
   margin-bottom: 0;
 }
 .kk-info-label {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-mute);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   letter-spacing: .3px;
 }
 .kk-info-value {
   font-family: 'Tajawal', sans-serif;
   font-weight: 800;
-  font-size: 28px;
+  font-size: 34px;
   color: var(--text);
   line-height: 1.2;
   margin-top: auto;
 }
 .kk-info-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-mute);
-  margin-top: 6px;
+  margin-top: 8px;
   font-weight: 500;
 }
 
@@ -632,8 +632,8 @@ html, body {
 .kk-route-card-big {
   background: var(--green);
   border: none;
-  border-radius: 20px;
-  padding: 26px 28px;
+  border-radius: 24px;
+  padding: 30px 32px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -643,9 +643,9 @@ html, body {
   color: #fff;
   text-align: right;
   font-family: inherit;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .kk-route-card-big:hover {
   transform: translateY(-2px);
@@ -698,7 +698,7 @@ html, body {
 .kk-welcome-actions {
   display: flex;
   gap: 12px;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
   margin-top: 8px;
 }
@@ -1519,6 +1519,15 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
 
+      <div class="kk-welcome-actions">
+        <button class="kk-exit-btn" id="btn-exit">
+          <svg viewBox="0 0 256 256" fill="currentColor">
+            <path d="M120,216a8,8,0,0,1-8,8H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h64a8,8,0,0,1,0,16H48V208h64A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"/>
+          </svg>
+          تسجيل خروج
+        </button>
+      </div>
+
       <!-- Route card with embedded print action -->
       <button class="kk-route-card-big" id="route-btn">
         <div class="kk-route-content">
@@ -1531,15 +1540,6 @@ html { scroll-behavior: smooth; }
           </svg>
         </div>
       </button>
-
-      <div class="kk-welcome-actions">
-        <button class="kk-exit-btn" id="btn-exit">
-          <svg viewBox="0 0 256 256" fill="currentColor">
-            <path d="M120,216a8,8,0,0,1-8,8H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h64a8,8,0,0,1,0,16H48V208h64A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"/>
-          </svg>
-          تسجيل خروج
-        </button>
-      </div>
     </section>
 
     <!-- MAP -->
