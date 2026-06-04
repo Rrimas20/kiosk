@@ -152,6 +152,7 @@ html, body {
   width: 100%;
   min-height: 100vh;           /* full viewport — true vertical center */
   animation: kk-fade .35s ease;
+  position: relative;           /* anchor for .kk-back absolute positioning */
 }
 .kk-screen.active {
   display: flex;
@@ -311,24 +312,47 @@ html, body {
   right: 38px;
   background: #fff;
   border: 1.5px solid var(--border);
-  padding: 10px 18px;
+  padding: 14px 26px;
   border-radius: 999px;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--text);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  transition: background .15s, border-color .15s;
 }
 .kk-back:hover {
   background: var(--bg);
+  border-color: var(--border-2);
 }
 .kk-back svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
+}
+/* Prominent back button — used on login screens (NFC + ID entry) */
+.kk-back-prominent {
+  top: 130px;
+  right: auto;
+  left: 38px;
+  background: #fff;
+  border: 2px solid var(--border);
+  padding: 16px 32px;
+  font-size: 19px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.1);
+}
+.kk-back-prominent:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: var(--green-light);
+}
+.kk-back-prominent svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* ===== READING NFC ===== */
@@ -540,60 +564,67 @@ html, body {
 .kk-info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  max-width: 900px;
+  gap: 16px;
+  max-width: 1100px;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .kk-info-card {
   background: #fff;
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  padding: 22px 20px;
-  transition: border-color .15s;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  transition: border-color .15s, box-shadow .15s;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
 }
-.kk-info-card:hover { border-color: var(--border-2); }
+.kk-info-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 8px 24px -8px rgba(20,89,60,.15);
+}
 .kk-info-card-head {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 .kk-info-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: var(--green-light);
   display: grid;
   place-items: center;
   flex-shrink: 0;
 }
 .kk-info-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   color: var(--green);
 }
 .kk-info-card-head .kk-info-label {
   margin-bottom: 0;
 }
 .kk-info-label {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-mute);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   letter-spacing: .3px;
 }
 .kk-info-value {
   font-family: 'Tajawal', sans-serif;
   font-weight: 800;
-  font-size: 22px;
+  font-size: 28px;
   color: var(--text);
   line-height: 1.2;
+  margin-top: auto;
 }
 .kk-info-sub {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-mute);
-  margin-top: 4px;
+  margin-top: 6px;
   font-weight: 500;
 }
 
@@ -601,8 +632,8 @@ html, body {
 .kk-route-card-big {
   background: var(--green);
   border: none;
-  border-radius: 16px;
-  padding: 22px 24px;
+  border-radius: 20px;
+  padding: 26px 28px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -612,9 +643,9 @@ html, body {
   color: #fff;
   text-align: right;
   font-family: inherit;
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .kk-route-card-big:hover {
   transform: translateY(-2px);
@@ -667,9 +698,9 @@ html, body {
 .kk-welcome-actions {
   display: flex;
   gap: 12px;
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 /* ===== EXIT BUTTON (logout — white with interactive hover) ===== */
 .kk-exit-btn {
@@ -1401,7 +1432,7 @@ html { scroll-behavior: smooth; }
         <span>للهوية الصحية الإلكترونية في <b>Apple Wallet</b> أو <b>Google Wallet</b>: اضغط زر الجانب <b>مرتين</b> أولاً لتفعيل البطاقة، ثم قرّب الجوال</span>
       </div>
 
-      <button class="kk-back" data-back="options">
+      <button class="kk-back kk-back-prominent" data-back="options">
         <svg viewBox="0 0 256 256" fill="currentColor"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"/></svg>
         رجوع
       </button>
@@ -1409,7 +1440,7 @@ html { scroll-behavior: smooth; }
 
     <!-- ID ENTRY -->
     <section class="kk-screen kk-id-entry" data-screen="id-entry">
-      <button class="kk-back" data-back="options">
+      <button class="kk-back kk-back-prominent" data-back="options">
         <svg viewBox="0 0 256 256" fill="currentColor"><path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"/></svg>
         رجوع
       </button>
